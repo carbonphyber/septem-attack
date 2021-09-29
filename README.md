@@ -11,6 +11,19 @@ Each nested layer has (English?) plaintext preceeding binary ciphertext. This pl
 In general, the approach will be to find likely candidates for keys (look for patterns to guess the key period), limit our search space to BIP-39 wordlist matches, then try to parallelize the remaining search.
 
 
+## Run the Code
+
+Take a sample (first 140 bytes) of the chapter1 file and base64 encode it so it is safe to pass around as a CLI parameter:
+```
+$ cat ./chapter1 | head -c 140 | base64
+```
+
+This results in:
+```
+fmVPegksDjVqW39ZYVtpeA0sFCNKfnpeakB1QC8nFzVQfFd/b0hhVCwPIClfY1l9UXlxWy8ZJR94dEZySH1bfjEPNQd1WnlzQHhLaQk4MA1mQHxXfGBNaQEqET96UGBffEd0cgsmCjdZd39Ra1x5XjU1ASJLYEZsYToZMUpDe1I8fB5iNBAwNwBqf30=
+```
+
+
 ## Data Files
 
 ### Chapter 1
