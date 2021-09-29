@@ -13,10 +13,25 @@ In general, the approach will be to find likely candidates for keys (look for pa
 
 ## Run the Code
 
-Take a sample (first 140 bytes) of the chapter1 file and base64 encode it so it is safe to pass around as a CLI parameter:
+### Step 1
+Decode the image steganography:
+```
+stegify decode --carrier ./wh8hlbzrsfx61.png --result ./stegify-result.png
+```
+
+### Step 2
+Separate the description/hint from the ciphertext:
+```
+cat ./stegify-result.png | tail -c 7519 | head -c 6685
+```
+(these numbers were derived from guess-and-check to find the boundaries of the English text / ciphertext)
+
+### Step 3
+In order to attach the Chapter 1 XOR decryption, we will need to take the suspected encrypted English text. To take a sample (first 140 bytes) of the `chapter1` file and base64 encode it so it is safe to pass around as a CLI parameter:
 ```
 $ cat ./chapter1 | head -c 140 | base64
 ```
+(note that we don't know with very high confidence that the first 140 bytes decrypt into English text, so we may need to adjust this number down for increased certainty or up for more data to use with statistical analysis)
 
 This results in:
 ```
@@ -27,10 +42,10 @@ fmVPegksDjVqW39ZYVtpeA0sFCNKfnpeakB1QC8nFzVQfFd/b0hhVCwPIClfY1l9UXlxWy8ZJR94dEZy
 ## Data Files
 
 ### Chapter 1
-[chapter 1 ciphertext](./chapter1)
+[chapter 1 ciphertext](./chapter1). This was obtained from "Step 2" of "Run the Code".
 
 ### Initial Steganography results
-[stegify-result.png](./stegify-result.png)
+[stegify-result.png](./stegify-result.png). This was obtained from "Step 1" of "Run the Code".
 
 ### BIP-39 words
 [English BIP-39 words](./english.txt) gathered from [Bitcoin BIP-39](https://github.com/bitcoin/bips/blob/master/bip-0039/english.txt)
