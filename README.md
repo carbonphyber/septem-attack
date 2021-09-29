@@ -27,15 +27,9 @@ cat ./stegify-result.png | tail -c 7519 | head -c 6685
 (these numbers were derived from guess-and-check to find the boundaries of the English text / ciphertext)
 
 ### Step 3
-In order to attach the Chapter 1 XOR decryption, we will need to take the suspected encrypted English text. To take a sample (first 140 bytes) of the `chapter1` file and base64 encode it so it is safe to pass around as a CLI parameter:
+Run the Python analysis script with `chapter1` as `STDIN`:
 ```
-$ cat ./chapter1 | head -c 140 | base64
-```
-(note that we don't know with very high confidence that the first 140 bytes decrypt into English text, so we may need to adjust this number down for increased certainty or up for more data to use with statistical analysis)
-
-This results in:
-```
-fmVPegksDjVqW39ZYVtpeA0sFCNKfnpeakB1QC8nFzVQfFd/b0hhVCwPIClfY1l9UXlxWy8ZJR94dEZySH1bfjEPNQd1WnlzQHhLaQk4MA1mQHxXfGBNaQEqET96UGBffEd0cgsmCjdZd39Ra1x5XjU1ASJLYEZsYToZMUpDe1I8fB5iNBAwNwBqf30=
+cat ./chapter1 | python3 python/main.py
 ```
 
 
