@@ -5,6 +5,11 @@ Work on attacking the Septem cryptocurrency puzzle as described on [this Reddit 
 ## Puzzle Overview
 Septem is a cryptocurrency puzzle described in /r/bitcoinpuzzles, but allegedly originally published on 4Chan. The [PNG image](./wh8hlbzrsfx61.png) uses steganography to hide the puzzle description and the ciphertext. In broad strokes, it is a 7-layer deep nesting doll of encryption (each layer is XOR then Vigenere), each layer with a different key.
 
+## Approach
+Each nested layer has (English?) plaintext preceeding binary ciphertext. This plaintext is likely how one can reduce the search space for the XOR key + Vigenere key.
+
+In general, the approach will be to find likely candidates for keys (look for patterns to guess the key period), limit our search space to BIP-39 wordlist matches, then try to parallelize the remaining search.
+
 
 ## Data Files
 
@@ -15,7 +20,7 @@ Septem is a cryptocurrency puzzle described in /r/bitcoinpuzzles, but allegedly 
 [stegify-result.png](./stegify-result.png)
 
 ### BIP-39 words
-[English BIP-39 words](./english.txt) gahtered from [Bitcoin BIP-39](https://github.com/bitcoin/bips/blob/master/bip-0039/english.txt)
+[English BIP-39 words](./english.txt) gathered from [Bitcoin BIP-39](https://github.com/bitcoin/bips/blob/master/bip-0039/english.txt)
 
 ### wh8hlbzrsfx61.png
 ![Septem Image](./wh8hlbzrsfx61.png)
