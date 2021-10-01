@@ -29,8 +29,9 @@ cat ./stegify-result.png | tail -c 7519 | head -c 6685
 ### Step 3
 Run the Python analysis script with `chapter1` as `STDIN`:
 ```
-cat ./chapter1 | python3 python/main.py
+cat ./chapter1 | python3 python/main.py --hint="****face****"
 ```
+Note: `--hint="****face***"` tells the script that the XOR decryption key is 12 characters long with 4 unknown characters, 4 known characters (`face`) and 4 unknown characters. This is useful for restricting the search space.
 
 
 ## Data Files
