@@ -29,7 +29,7 @@ cat ./stegify-result.png | tail -c 7519 | head -c 6685
 ### Step 3
 Run the Python analysis script with `chapter1` as `STDIN`:
 ```
-cat ./chapter1 | python3 python/main.py --hint="****face****"
+cat ./chapters/1/ciphertext.data | python3 python/main.py --hint="****face****"
 ```
 Note: `--hint="****face***"` tells the script that the XOR decryption key is 12 characters long with 4 unknown characters, 4 known characters (`face`) and 4 unknown characters. This is useful for restricting the search space.
 
@@ -37,7 +37,7 @@ Note: `--hint="****face***"` tells the script that the XOR decryption key is 12 
 ## Data Files
 
 ### Chapter 1
-[chapter 1 ciphertext](./chapter1). This was obtained from "Step 2" of "Run the Code".
+[chapter 1 ciphertext](./chapters/1/ciphertext.data). This was obtained from "Step 2" of "Run the Code".
 
 ### Initial Steganography results
 [stegify-result.png](./stegify-result.png). This was obtained from "Step 1" of "Run the Code".
